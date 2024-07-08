@@ -173,7 +173,7 @@ fun HomePage(
                         Text(
                             modifier = Modifier
                                 .clip(RoundedCornerShape(8.dp))
-                                .clickable { if(model.canContinue.value)model.LogoutFunctionallity() }
+                                .clickable { if (model.canContinue.value) model.LogoutFunctionallity() }
                                 .padding(5.dp),
                             text = "Logout",
                             fontWeight = FontWeight(600),
@@ -183,7 +183,10 @@ fun HomePage(
                         )
 
                     }
-                    Row (Modifier.fillMaxWidth().padding(top = 10.dp , bottom = 10.dp)){
+                    Row (
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 10.dp, bottom = 10.dp)){
                         Text(
                             modifier = Modifier.fillMaxWidth(),
                             text = "all PDFs are added by admin .\n download to use them",
@@ -291,7 +294,7 @@ fun HomePage(
                         Text(
                             modifier = Modifier
                                 .clip(RoundedCornerShape(8.dp))
-                                .clickable { if(model.canContinue.value)model.LogoutFunctionallity() }
+                                .clickable { if (model.canContinue.value) model.LogoutFunctionallity() }
                                 .padding(5.dp),
                             text = "Logout",
                             fontWeight = FontWeight(600),
@@ -513,6 +516,7 @@ fun downloadFile(fileUrl: String, fileName: String, onProgress: (Float) -> Unit)
             outputStream.close()
         } catch (e: Exception) {
             // Handle any errors that occur during the download
+            Log.d("TAG", "downloadFile: eror $e")
         }
     }
 }
@@ -540,7 +544,7 @@ fun DownloadFileScreen(
             .fillMaxWidth()
             .padding(10.dp)
             .height(100.dp)
-            .clip(RoundedCornerShape(40,8,8,40))
+            .clip(RoundedCornerShape(40, 8, 8, 40))
             .background(if (downloaded) mainGray else mainAdminBGCColor)
             .clickable {
                 if (downloaded == false) {
